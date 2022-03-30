@@ -11,6 +11,9 @@ const statuses = [
 	'The best way to predict your future is to create it.',
 	'High expectations are often a stepping stone to worse things.',
 ];
+//create a variable called clockEmoji and set it to an array of strings with the time emoji
+//after the time emoji, select a emoji based of the 12 hour clock
+const clockEmoji = ['🕛', '🕐', '🕑', '🕒', '🕓', '🕔', '🕕', '🕖', '🕗', '🕘', '🕙', '🕚'][new Date().getHours() % 12];
 
 //create a function called randomStatus, dont pass any arguments
 function randomStatus() {
@@ -20,8 +23,10 @@ function randomStatus() {
 		return 0.5 - Math.random(); // <— sort needs a number and this makes it work
 	})[0];
 
-	//set the status to the random string
-	this.status = new RichPresence.CustomStatus().setState(status).toDiscord();
+	//create status to the client and create new instance of RichPresence.CustomStatus
+	//use setStatus to set the status to the status variable
+	//use setUnicodeEmoji to set the emoji to the clockEmoji variable
+	this.status = new RichPresence.CustomStatus().setUnicodeEmoji(clockEmoji).setState(status).toDiscord();
 
 	//set user activity to the status
 	this.user.setActivity(this.status);

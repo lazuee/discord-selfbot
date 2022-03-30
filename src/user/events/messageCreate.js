@@ -1,4 +1,5 @@
 //create a function called messageCreate, pass the message as an argument
+/** @param {import("discord.js").Message} message */
 function messageCreate(message) {
 	//check if the message is not empty
 	if (message.content) {
@@ -7,25 +8,43 @@ function messageCreate(message) {
 			//if it does, then get the command from the message
 			//and remove the prefix from the message
 			const command = message.content.slice(process.env.PREFIX.length).split(' ')[0];
+			//get the arguments from the message
+			const args = message.content.slice(process.env.PREFIX.length).split(' ').slice(1);
+
 			//check if the command is in the commands collection
 			if (this.commands.has(command)) {
-				//if it is, then call the command and bind it to the message
 				//check if the command is a function
 				if (typeof this.commands.get(command) === 'function') {
-					//if it is, then call the command and bind it to the message
-					//if the command is working properly, then log the command to the console in green
-					//if the command is not working properly, then log the command to the console in red
-					//use try catch to catch any errors that may occur
+					//if it is, then bind the function to the client
+					//and pass the message and arguments as arguments
+					//first, use try catch to catch any errors
 					try {
-						this.commands.get(command).bind(this)(message);
-						console.log(`Command ${command} executed by ${message.author.tag}`.green);
-					} catch (err) {
-						console.error(`Command ${command} failed to execute: ${err.message}`.red);
+						this.commands.get(command).bind(this)(message, args);
+
+						//if there is no error, then log the command in green
+						//with the word ran in front of it
+						//the message will be in green
+						//add author name and command name to the message
+						console.log(`${message.author.tag} ran the command ${command}`.green);
+					} catch (error) {
+						//if there is an error, then log it in red
+						//with the word Error in front of it
+						//the message will be in red
+						console.error(`Error: ${error}`.red);
 					}
+
+					//if the command is not a function
 				} else {
-					//if it is not, then log the command to the console in red
-					console.error(`Command ${command} is not a function`.red);
+					//log the command in red
+					//with the word Error in front of it
+					//the message will be in red
+					console.error(`Error: ${command} is not a function`.red);
 				}
+			} else {
+				//log the command in red
+				//with the word Error in front of it
+				//the message will be in red
+				console.error(`Error: ${command} is not a command`.red);
 			}
 		}
 	}
