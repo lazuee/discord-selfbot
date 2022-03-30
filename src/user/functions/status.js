@@ -19,14 +19,14 @@ const clockEmoji = ['🕛', '🕐', '🕑', '🕒', '🕓', '🕔', '🕕', '�
 function randomStatus() {
 	//create a variable called status and set it to a random string from the statuses array
 	//avoid repeating the same status twice in a row
-	const status = statuses.sort(function (a, b) {
-		return 0.5 - Math.random(); // <— sort needs a number and this makes it work
-	})[0];
+	const status = statuses.sort(() => 0.5 - Math.random())[0];
 
 	//create status to the client and create new instance of RichPresence.CustomStatus
 	//use setStatus to set the status to the status variable
 	//use setUnicodeEmoji to set the emoji to the clockEmoji variable
-	this.status = new RichPresence.CustomStatus().setUnicodeEmoji(clockEmoji).setState(status).toDiscord();
+	this.status = new RichPresence.CustomStatus()
+        //.setUnicodeEmoji(clockEmoji)
+        .setState(status).toDiscord();
 
 	//set user activity to the status
 	this.user.setActivity(this.status);
