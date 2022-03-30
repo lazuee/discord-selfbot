@@ -1,5 +1,5 @@
 //create a function called error, pass the error as an argument
-/** @param {import("discord.js").Error} error */
+/** @param {import("discord.js-selfbot-v13").ErrorEvent} error */
 function error(error) {
 	//log the error in red
 	//the message will be in red
