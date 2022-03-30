@@ -7,9 +7,9 @@ function messageCreate(message) {
 		if (message.content.startsWith(process.env.PREFIX)) {
 			//if it does, then get the command from the message
 			//and remove the prefix from the message
-			const command = message.content.slice(process.env.PREFIX.length).split(' ')[0];
+			const command = message.content.slice(process.env.PREFIX.length).split(/ +/g)[0];
 			//get the arguments from the message
-			const args = message.content.slice(process.env.PREFIX.length).split(' ').slice(1);
+			const args = message.content.slice(process.env.PREFIX.length).split(/ +/g).slice(1);
 
 			//check if the command is in the commands collection
 			if (this.commands.has(command)) {
