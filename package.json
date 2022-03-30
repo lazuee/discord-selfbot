@@ -13,9 +13,8 @@
 	"dependencies": {
 		"colors": "^1.4.0",
 		"discord-rpc-contructor": "^1.0.5",
-		"discord.js-selfbot-v13": "^1.1.7",
-		"express": "^4.17.3",
-		"node-fetch": "^3.2.3"
+		"discord.js-selfbot-v13": "^1.2.0",
+		"express": "^4.17.3"
 	},
 	"devDependencies": {
 		"dotenv": "^16.0.0",
