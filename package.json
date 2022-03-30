@@ -14,7 +14,8 @@
 		"colors": "^1.4.0",
 		"discord-rpc-contructor": "^1.0.5",
 		"discord.js-selfbot-v13": "^1.2.1",
-		"express": "^4.17.3"
+		"express": "^4.17.3",
+		"util": "^0.12.4"
 	},
 	"devDependencies": {
 		"dotenv": "^16.0.0",
