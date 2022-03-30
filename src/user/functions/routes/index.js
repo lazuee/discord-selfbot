@@ -3,6 +3,28 @@
  * @param {import("express").Express} app
  */
 function routes(app) {
+	//setup the app to use express.js
+	//set the app to use the json middleware
+	app.use(require('express').json());
+	//set the app to use the url encoded middleware
+	app.use(require('express').urlencoded({ extended: true }));
+
+	//set json as the default content type
+	app.use((req, res, next) => {
+		res.set('Content-Type', 'application/json');
+		next();
+	});
+
+	//configure the default app settings
+	app.set('trust proxy', true);
+	app.set('x-powered-by', false);
+	app.set('etag', false);
+	app.set('strict routing', true);
+	app.set('case sensitive routing', true);
+
+	//make json pretty
+	app.set('json spaces', 2);
+
 	//check files in the routes folder with the extension .js
 	//don't include the index.js file in the search
 	//for each file found, require the file and call the function
