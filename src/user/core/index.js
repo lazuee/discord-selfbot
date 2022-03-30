@@ -94,8 +94,6 @@ class Core extends Discord.Client {
 		//call the super login method from discord.js-selfbot-v13
 		//if the login is successful, call the handler method to load the commands and events
 		super.login(process.env.TOKEN).then(() => this.handler());
-		//if the login is unsuccessful, log the error
-		this.on('error', console.error);
 	}
 }
 
