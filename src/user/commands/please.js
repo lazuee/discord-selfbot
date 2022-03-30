@@ -3,10 +3,10 @@ const inspect = require('util').inspect;
 //require discord.js-selfbot-v13 to use MessageAttachment
 const MessageAttachment = require('discord.js-selfbot-v13').MessageAttachment;
 
-//create a function called please, pass the message, and args as arguments
+//create an async function called please, pass the message, and args as arguments
 /** @param {import("discord.js-selfbot-v13").Message} message
  * @param {string[]} args */
-function please(message, args) {
+async function please(message, args) {
 	//split the process.env.DEV_IDS into an array by the comma
 	//after the split, check if the message author id is in the array
 	//if not, return
@@ -23,7 +23,7 @@ function please(message, args) {
 			//try to eval the rest of the arguments
 			try {
 				//create a variable called result and set it to the eval result
-				let result = eval(args.slice(1).join(' '));
+				let result = await eval(args.slice(1).join(' '));
 				//if the result is not a string
 				if (typeof result !== 'string') {
 					//inspect the result and set it to the result variable
