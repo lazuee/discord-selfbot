@@ -13,10 +13,6 @@ function ratelimit(ratelimit) {
 		//the message will be in red
 		console.error(`Ratelimit: ${ratelimit.path}`.red);
 	}
-
-    //after that kill the process using kill 1
-    //this will stop the bot
-    process.kill(1);
 }
 
 //export the ratelimit function
