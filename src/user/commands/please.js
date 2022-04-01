@@ -59,7 +59,7 @@ async function please(message, args) {
 					//require discord.js-selfbot-v13 to use WebEmbed
 					const WebEmbed = require('discord.js-selfbot-v13').WebEmbed;
 					//create a new instance of a WebEmbed
-					const embed = new WebEmbed()
+					const embed = new WebEmbed({ shorten: true })
 						.setAuthor({ name: 'hello', url: 'https://google.com' })
 						.setColor('RED')
 						.setDescription('description uh')
@@ -72,7 +72,7 @@ async function please(message, args) {
 						);
 
 					//send the embed as a content message
-					message.channel.send({ content: `Nani?! Embeduu? ${await embed.toMessage(true, true)}` });
+					message.channel.send({ content: 'Nani?! Embeduu?', embeds: [embed,embed, embed] });
 					//break the switch case
 					break;
 				//if there is no second argument
