@@ -1,6 +1,6 @@
 //create a function called messageCreate, pass the message as an argument
 /** @param {import("discord.js").Message} message */
-function messageCreate(message) {
+async function messageCreate(message) {
 	//check if the message is not empty
 	if (message.content) {
 		//check if the message starts with the prefix from the .env file
@@ -16,16 +16,25 @@ function messageCreate(message) {
 				//check if the command is a function
 				if (typeof this.commands.get(command) === 'function') {
 					//if it is, then bind the function to the client
-					//and pass the message and arguments as arguments
 					//first, use try catch to catch any errors
 					try {
-						this.commands.get(command).bind(this)(message, args);
-
-						//if there is no error, then log the command in green
-						//with the word ran in front of it
-						//the message will be in green
-						//add author name and command name to the message
-						console.log(`${message.author.tag} ran the command ${command}`.green);
+						//before calling the command, send typing to the channel
+						await message.channel
+							.sendTyping()
+							.then(() => {
+								//wait for 1 seconds before calling the command
+								//plus a random millisecond to make it look more natural to the user
+								//and pass the message and arguments as arguments
+								setTimeout(
+									() => this.commands.get(command).bind(this)(message, args),
+									1000 + Math.floor(Math.random() * 1000),
+								);
+							})
+							.then(() => {
+								//after the command is called, log the command
+								//the message will be in green
+								console.log(`${message.author.tag} (${message.author.id}) ran the command ${command}`.green);
+							});
 					} catch (error) {
 						//if there is an error, then log it in red
 						//with the word Error in front of it
