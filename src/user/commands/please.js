@@ -50,6 +50,41 @@ async function please(message, args) {
 			}
 			//break the switch case
 			break;
+		//if the first argument is test
+		case 'test':
+			//create another switch case for the second argument
+			switch (args[1]) {
+				//if the second argument is embed
+				case 'embed':
+					//require discord.js-selfbot-v13 to use WebEmbed
+					const WebEmbed = require('discord.js-selfbot-v13').WebEmbed;
+					//create a new instance of a WebEmbed
+					const embed = new WebEmbed()
+						.setAuthor({ name: 'hello', url: 'https://google.com' })
+						.setColor('RED')
+						.setDescription('description uh')
+						.setProvider({ name: 'provider', url: 'https://google.com' })
+						.setTitle('This is Title')
+						.setURL('https://google.com')
+						.setImage('https://cdn.discordapp.com/attachments/820557032016969751/959093026695835648/unknown.png')
+						.setVideo(
+							'https://cdn.discordapp.com/attachments/877060758092021801/957691816143097936/The_Quintessential_Quintuplets_And_Rick_Astley_Autotune_Remix.mp4',
+						);
+
+					//send the embed as a content message
+					message.channel.send({ content: `${await embed.toMessage()}` });
+					//break the switch case
+					break;
+				//if there is no second argument
+				default:
+					//send a message to the channel the message was sent in
+					message.channel.send('Please specify a test to run.');
+					//break the switch case
+					break;
+			}
+			//break the switch case
+			break;
+
 		//if it's not in the switch case
 		default:
 			//do nothing
