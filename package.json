@@ -13,7 +13,7 @@
 	"dependencies": {
 		"colors": "^1.4.0",
 		"discord-rpc-contructor": "^1.0.5",
-		"discord.js-selfbot-v13": "^1.2.3",
+		"discord.js-selfbot-v13": "^1.2.4",
 		"express": "^4.17.3",
 		"util": "^0.12.4"
 	},

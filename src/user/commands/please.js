@@ -16,10 +16,11 @@ async function please(message, args) {
 	switch (args[0]) {
 		//if the first argument is eval
 		case 'eval':
-			//if the args contains proces.env then send a messsage to the author
-			if (args.includes('process.env')) {
-				return message.author.send("You can't use process.env in eval.");
-			}
+			//convert args to a string then check if it contains the word 'process.env'
+			//if it does, return with a message saying that it is not allowed
+			if (args.join(' ').includes('process.env'))
+				return message.channel.send({ content: 'You cannot use process.env in your code.' });
+
 			//try to eval the rest of the arguments
 			try {
 				//create a variable called result and set it to the eval result
