@@ -72,7 +72,7 @@ async function please(message, args) {
 						);
 
 					//send the embed as a content message
-					message.channel.send({ content: `${await embed.toMessage()}` });
+					message.channel.send({ content: `Nani?! Embeduu? ${await embed.toMessage(true, true)}` });
 					//break the switch case
 					break;
 				//if there is no second argument
