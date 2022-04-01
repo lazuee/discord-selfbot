@@ -31,8 +31,8 @@ async function please(message, args) {
 					result = inspect(result);
 				}
 				//send a message to the channel the message was sent in
-				//if the result length is greater than 4000 characters
-				if (result.length > 4000) {
+				//if the result length is greater than 2000 characters
+				if (result.length > 2000) {
 					//send it as a file
 					message.channel.send({
 						files: [
@@ -72,7 +72,7 @@ async function please(message, args) {
 						);
 
 					//send the embed as a content message
-					message.channel.send({ content: 'Nani?! Embeduu?', embeds: [embed,embed, embed] });
+					message.channel.send({ content: 'Nani?! Embeduu?', embeds: [embed] });
 					//break the switch case
 					break;
 				//if there is no second argument
