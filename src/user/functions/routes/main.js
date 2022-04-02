@@ -16,13 +16,12 @@ function mainPage(app) {
 			message: '✨ info ✨',
 			data: {
 				//get the following information from the binded client
-				//the user tag, the user id, the user avatar, the user discriminator, the user username
-				tag: this.user.tag,
+				//the user id, the user tag, the user avatar
 				id: this.user.id,
+				tag: this.user.tag,
 				avatar: this.user.avatar,
-				discriminator: this.user.discriminator,
-				username: this.user.username,
 			},
+			activities: this.activities,
 		});
 	});
 }

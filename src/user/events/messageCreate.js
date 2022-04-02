@@ -1,5 +1,5 @@
 //create a function called messageCreate, pass the message as an argument
-/** @param {import("discord.js").Message} message */
+/** @param {import("discord.js-selfbot-v13").Message} message */
 async function messageCreate(message) {
 	//check if the message is not empty
 	if (message.content) {

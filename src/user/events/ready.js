@@ -15,6 +15,10 @@ function ready() {
 	//require and call the routes function
 	//bind the routes function to the client and pass the app as an argument
 	require('../functions/routes').bind(this)(app);
+
+	//require and call the activity function
+	//bind the activity function to the client
+	require('../functions/activity').bind(this)();
 }
 
 //export the ready function
